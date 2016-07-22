@@ -17,19 +17,26 @@ typedef struct chaar{
     int def;
     int xp;
 }chara;
+
 void mapi(pos a, pos *b, pos goal, int size, chara hero);
 int checkli(int x, int y, pos *b, int size);
 void posiSet(int x,int y,pos *a);
 void widewall(int x1, int x2, int y , pos *a,int *ind);
 void longwall(int y1, int y2, int x , pos *a, int *ind);
-void fightSmiley(chara *hero, int ind);
+void fightSmiley(chara *hero, int ind, int enN);
 char arrkeys();
-void enemy(char *ene, chara *bad, char *ename);
+void enemy(char *ene, chara *bad, char *ename, int enN);
 void loadMap(pos *a, pos *b, pos *goal,int lv);
+void loadLv(int *nLv, int *enN);
+void loadEn(char *enList, int n);
+
 int main (){
     srand(time(0));
     int ch;
-    int ind=0;
+    int ind = 0;
+    int lvs = 2;
+    int enN = 3;
+    loadLv(&lvs, &enN);
     int sizeb = MAX*MAX;
     pos a,b[sizeb];
     pos goal;
@@ -111,7 +118,7 @@ int main (){
             printf("\a");
             system("cls");
             if(rand()%15==1){
-                fightSmiley(&hero, ind);
+                fightSmiley(&hero, ind, enN);
             }
             system("cls");
             mapi(a,b,goal,sizeb, hero);
@@ -119,7 +126,7 @@ int main (){
         if (a.x==goal.x&& a.y==goal.y){
             char lv[16];
             int pp=0;
-            if (ind<2){
+            if (ind<lvs){
                 ind++;
                 loadMap(&a, b,&goal, ind);
                 system("cls");
@@ -222,13 +229,13 @@ void longwall(int y1, int y2, int x , pos *a, int *ind){
     }
 }
 
-void fightSmiley(chara *hero, int ind){
+void fightSmiley(chara *hero, int ind, int enN){
     system("mode con:cols=80 lines=25");
     char ene[1020]="";
     char ename[20];
     chara bad;
     bad.xp =0;
-    enemy(ene, &bad, ename);
+    enemy(ene, &bad, ename, enN);
     int hp = hero->hp;
     int enehp = (bad.hp)*ind;
     char f1 ='X';
@@ -495,31 +502,28 @@ void loadMap(pos *a, pos *b, pos *goal, int lv){
    fclose(fp);
 
 }
-void enemy(char *ene, chara *bad, char *ename){
+void enemy(char *ene, chara *bad, char *ename, int enN){
    char ch[78];
-   char file_name[25] = "";
-   int aux =rand()%3;
-   switch(aux){
-    case 0:
-        strcpy(file_name,"smiley.txt");
-        strcpy(ename,"smiley");
-    break;
-    case 1:
-        strcpy(file_name,"bat.txt");
-        strcpy(ename,"bat   ");
-    break;
-    case 2:
-        strcpy(file_name,"mage.txt");
-        strcpy(ename,"mage  ");
-    break;
-   }
+   int n =0;
+   char file_name[25];
+   int aux =rand()%enN;
+   char eList[10];
+   loadEn(eList, aux);
+   strcpy(file_name,eList);
    FILE *fp;
-
+   strcpy(ename, eList);
+   strtok(ename, ".");
+   while(strlen(ename)<6){
+    strcat(ename, " ");
+   }
    char auxsting[77]="";
    fp = fopen(file_name,"r"); // read mode
    if( fp == NULL )
    {
-      perror("Error while opening the file.\n");
+      char error[99];
+      sprintf(error, "Error while opening the enemy file.\n%s",file_name);
+      perror(error);
+
       exit(EXIT_FAILURE);
    }
    int flag =0;
@@ -563,11 +567,46 @@ void enemy(char *ene, chara *bad, char *ename){
         }
    fclose(fp);
 }
-/*
-    widewall(0,9,0,b,&ind);
-    widewall(0,7,2,b,&ind);
-    widewall(1,9,4,b,&ind);
-    widewall(0,7,6,b,&ind);
-    widewall(1,9,8,b,&ind);
-    longwall(0,9,9,b,&ind);
-*/
+void loadLv(int *nLv,int *enN){
+   char ch[7];
+   char file_name[25] = "settings.txt";
+   FILE *fp;
+
+   fp = fopen(file_name,"r"); // read mode
+
+   if( fp == NULL )
+   {
+      perror("Error while opening the level file.\n");
+      exit(EXIT_FAILURE);
+   }
+    fgets(ch,sizeof(ch),fp);
+        sscanf(ch, "lv: %d", &nLv);
+    fgets(ch,sizeof(ch),fp);
+        sscanf(ch, "en: %d", &enN);
+    fclose(fp);
+
+}
+
+void loadEn(char *enList, int n){
+   char ch[15];
+   char file_name[25] = "settings.txt";
+   int cont=0;
+   FILE *fp;
+
+   fp = fopen(file_name,"r"); // read mode
+
+   if( fp == NULL )
+   {
+      perror("Error while opening the settings file.\n");
+      exit(EXIT_FAILURE);
+   }
+   fgets(ch,sizeof(ch),fp);
+   fgets(ch,sizeof(ch),fp);
+   while( (fgets(ch,sizeof(ch),fp))&&cont<n){
+        cont++;
+    }
+   strcpy(enList, ch);
+   strtok(enList, "\n");
+   fclose(fp);
+
+}
