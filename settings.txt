@@ -1,0 +1,5 @@
+lv: 2
+en: 3
+bat.txt
+smiley.txt
+mage.txt

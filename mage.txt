@@ -1,0 +1,18 @@
++--------------------------------------------------------------------------+
+|      *  *  **                                                            |
+|       *  0  *                xxxx xxxx    xxxxxxxxx xxxxxx               |
+|      * II0II  *          xxxxxxxxxxxxxxxxxxxx x xxxxxxxxxx               |
+|        IIoII*          xxxxxxIIIIIIIIIxxx xxxx    xx xx                  |
+|     **  IoI   *       xxxxxII  IIII  IIIxxx   xxxxxxxx                   |
+|      * * o  *        xxxxIIII  IIII  IIIIIxx xx   xx                     |
+|      *   o  *       xxxIIIIII  IIII  IIIIIIx x  x x                      |
+|          o   *      xxIIIIIII  IIII  IIIIIIxx  xxxx                      |
+|          oxxx      xxIIIIIIIIIIIIIIIIIIIIIIIxx xxxx                      |
+|          oxxxxxx  xxxxxxxxxxxxxxxxxxxxxxxxxxxx x  x                      |
++          o x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                      |
+x+-------------------------------------------------------------------------+
+
+h: 23
+s: 09
+m: 20
+d: 05

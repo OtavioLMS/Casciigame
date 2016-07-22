@@ -1,0 +1,18 @@
++--------------------------------------------------------------------------+
+|                           XXXXXXXXXXXXX                                  |
+|                         XXXXXXXXXXXXXXXXX                                |
+|                       XXXXXX  XXXXX  XXXXXX                              |
+|                      XXXXXXX  XXXXX  XXXXXXX                             |
+|                     XXXXXXXX  XXXXX  XXXXXXXX                            |
+|                     XXXXXXXX  XXXXX  XXXXXXXX                            |
+|                     XXXXXXXXXXXXXXXXXXXXXXXXX                            |
+|                      XXXX               XXXX                             |
+|                       XXXXX           XXXXX                              |
+|                         XXXXXXXXXXXXXXXXX                                |
+|                           XXXXXXXXXXXXX                                  |
+x--------------------------------------------------------------------------+
+                                                                          
+h: 30
+s: 10
+m: 00
+d: 07
