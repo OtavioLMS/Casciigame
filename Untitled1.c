@@ -53,21 +53,6 @@ int main (){
     }
     ind =1;
     loadMap(&a, b,&goal, ind);
-/*    goal.x = 5;
-    goal.y = 5;
-    a.x = 0;
-    a.y = 1;
-
-    widewall(0,9,0,b,&ind);
-    longwall(0,9,9,b,&ind);
-    longwall(2,9,0,b,&ind);
-    widewall(0,7,2,b,&ind);
-    longwall(2,7,7,b,&ind);
-    widewall(3,7,7,b,&ind);
-    longwall(4,7,2,b,&ind);
-    widewall(3,5,4,b,&ind);
-    widewall(0,9,9,b,&ind);
-*/
     ch=0;
     mapi(a, b, goal, sizeb, hero);
     while ((ch = getch()) != 27) /* 27 = Esc key */
