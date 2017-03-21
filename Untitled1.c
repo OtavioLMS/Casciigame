@@ -57,7 +57,6 @@ int main (){
     mapi(a, b, goal, sizeb, hero);
     while ((ch = getch()) != 27) /* 27 = Esc key */
     {
-
         if (ch == 0 || ch == 224){
             switch (_getch ()){
                 case 72:
@@ -73,13 +72,13 @@ int main (){
                         }
                     }
 
-                break;
+                    break;
                 case 77:
                     if(checkli(((a.x+1)%MAX), a.y,b,sizeb)){
                         break;
                     }
                     a.x=(a.x+1)%MAX;
-                break;
+                    break;
                 case 75:
                     if(checkli(a.x-1, a.y,b,sizeb)){
                         break;
@@ -92,22 +91,21 @@ int main (){
                             a.x = MAX-1;
                         }
                     }
-                break;
+                    break;
                 case 80:
                     if(checkli(a.x, (a.y+1)%MAX,b,sizeb)){
                         break;
                     }
                     a.y=(a.y+1)%MAX;
-                break;
-                }
-            printf("\a");
+                    break;
+            }
             system("cls");
             if(rand()%15==1){
                 fightSmiley(&hero, ind, enN);
             }
             system("cls");
             mapi(a,b,goal,sizeb, hero);
-            }
+        }
         if (a.x==goal.x&& a.y==goal.y){
             char lv[16];
             int pp=0;
@@ -118,7 +116,7 @@ int main (){
                 sprintf(lv,"L E V E L   %d",ind);
                 int pp=0;
                 for(pp=0;lv[pp]!='\0';pp++){
-                    printf("%c\a",lv[pp]);
+                    printf("%c",lv[pp]);
                     Sleep(100);
                 }
             }
@@ -128,13 +126,13 @@ int main (){
                 char end[107]="congratulations you've escaped the castle of death \n and survived the evil smiley horde\n\n\n T H E   E N D";
 
                 for(pp=0;end[pp]!='\0';pp++){
-                printf("%c\a",end[pp]);
-                Sleep(100);
+                    printf("%c",end[pp]);
+                    Sleep(100);
                 }
-             printf("\n\n");
-            system("pause");
+                printf("\n\n");
+                system("pause");
 
-            exit(0);
+                exit(0);
             }
         }
     }
@@ -231,90 +229,90 @@ void fightSmiley(chara *hero, int ind, int enN){
     sprintf(texto,"an evil %s has appeared ",ename);
     int choice = 3;
     while(enehp>0&&hp>0){
-    system("cls");
-    printf("%s",ene);
-    printf("|--------------------------------------------------------------------------|\n");
-    printf("||                                       +---------------------------------|\n");
-    printf("|| %s          | %c attack                      |-|\n",texto,f1);
-    printf("|| hp = %2d                               | %c frown                       |-|\n",hp,f2);
-    printf("|| enemy hp = %2d                         | %c smile back                  |-|\n",enehp,f3);
-    printf("||                                       | %c guard                       |-|\n",f4);
-    printf("||                                       +---------------------------------|\n");
-    printf("|--------------------------------------------------------------------------|\n");
-    printf("+--------------------------------------------------------------------------+\n");
-     switch(arrkeys()){
-        case 'u':
-            choice =(choice+1)%4;
-        break;
-        case 'd':
-            choice -=1;
-            if(choice<0){
-                choice=3;
-            }
-        break;
-        case 'q':
-            switch(choice){
-                case 3:
-                    sprintf(texto,"you've attacked evil %s ",ename);
-                    system("color 4F");
-                    Sleep(100);
-                    system("color 0F");
-                    enehp-=(hero->st-(bad.def));
-                    hp -= -(hero->def-(bad.st+rand()%5));
+        system("cls");
+        printf("%s",ene);
+        printf("|--------------------------------------------------------------------------|\n");
+        printf("||                                       +---------------------------------|\n");
+        printf("|| %s          | %c attack                      |-|\n",texto,f1);
+        printf("|| hp = %2d                               | %c frown                       |-|\n",hp,f2);
+        printf("|| enemy hp = %2d                         | %c smile back                  |-|\n",enehp,f3);
+        printf("||                                       | %c guard                       |-|\n",f4);
+        printf("||                                       +---------------------------------|\n");
+        printf("|--------------------------------------------------------------------------|\n");
+        printf("+--------------------------------------------------------------------------+\n");
+        switch(arrkeys()){
+            case 'u':
+                choice =(choice+1)%4;
                 break;
-                case 2:
-                    strcpy(texto, "you've frowned              ");
-                    enehp-=(hero->sp-(bad.sp+rand()%15));
-                    hp -= -(hero->def-(bad.st+rand()%5));
+            case 'd':
+                choice -=1;
+                if(choice<0){
+                    choice=3;
+                }
                 break;
-                case 1:
-                    sprintf(texto,"you smile back to the smiley",ename);
-                    system("color 0A");
-                    Sleep(100);
-                    system("color A0");
-                    Sleep(50);
-                    system("color 0F");
-                    hp = hp + hero->sp/2;
-                    hp -= -(hero->def-(bad.st+rand()%5));
+            case 'q':
+                switch(choice){
+                    case 3:
+                        sprintf(texto,"you've attacked evil %s ",ename);
+                        system("color 4F");
+                        Sleep(100);
+                        system("color 0F");
+                        enehp-=(hero->st-(bad.def));
+                        hp -= -(hero->def-(bad.st+rand()%5));
+                        break;
+                    case 2:
+                        strcpy(texto, "you've frowned              ");
+                        enehp-=(hero->sp-(bad.sp+rand()%15));
+                        hp -= -(hero->def-(bad.st+rand()%5));
+                        break;
+                    case 1:
+                        sprintf(texto,"you smile back to the smiley",ename);
+                        system("color 0A");
+                        Sleep(100);
+                        system("color A0");
+                        Sleep(50);
+                        system("color 0F");
+                        hp = hp + hero->sp/2;
+                        hp -= -(hero->def-(bad.st+rand()%5));
+                        break;
+                    case 0:
+                        system("color 84");
+                        Sleep(100);
+                        system("color 0F");
+                        strcpy(texto, "you  guard to reduce damage ");
+                        hp -= -((hero->def*2)-(bad.st+rand()%5));
+                        break;
+                }
                 break;
-                case 0:
-                    system("color 84");
-                    Sleep(100);
-                    system("color 0F");
-                    strcpy(texto, "you  guard to reduce damage ");
-                    hp -= -((hero->def*2)-(bad.st+rand()%5));
+        }
+        switch(choice){
+            case 3:
+                f1 ='X';
+                f2 =' ';
+                f3 =' ';
+                f4 =' ';
                 break;
-            }
-        break;
-    }
-    switch(choice){
-                case 3:
-                    f1 ='X';
-                    f2 =' ';
-                    f3 =' ';
-                    f4 =' ';
+            case 2:
+                f1 =' ';
+                f2 ='X';
+                f3 =' ';
+                f4 =' ';
                 break;
-                case 2:
-                    f1 =' ';
-                    f2 ='X';
-                    f3 =' ';
-                    f4 =' ';
+            case 1:
+                f1 =' ';
+                f2 =' ';
+                f3 ='X';
+                f4 =' ';
                 break;
-                case 1:
-                    f1 =' ';
-                    f2 =' ';
-                    f3 ='X';
-                    f4 =' ';
+            case 0:
+                f1 =' ';
+                f2 =' ';
+                f3 =' ';
+                f4 ='X';
                 break;
-                case 0:
-                    f1 =' ';
-                    f2 =' ';
-                    f3 =' ';
-                    f4 ='X';
-                break;
-            }
-    if(hp>(hero->hp)){
-       hp=30;
+        }
+        if(hp>(hero->hp)){
+            hp=30;
         }
     }
 
@@ -415,183 +413,183 @@ char arrkeys(){
         switch (_getch ()){
             case 72:
                 return 'u';
-            break;
+                break;
             case 77:
                 return 'r';
-            break;
+                break;
             case 75:
                 return 'l';
-            break;
+                break;
             case 80:
                 return 'd';
-            break;
+                break;
             default:
                 return 'e';
-            }
         }
+    }
     if(ch == 13){
         return 'q';
-        }
+    }
 }
 void loadMap(pos *a, pos *b, pos *goal, int lv){
-   char ch;
-   int ind;
-   for(ind=0;ind<(MAX*MAX);ind++){
+    char ch;
+    int ind;
+    for(ind=0;ind<(MAX*MAX);ind++){
         b[ind].x=-1;
         b[ind].y=-1;
     }
-   char file_name[25];
-   sprintf(file_name,"lv%d.txt",lv);
-   FILE *fp;
+    char file_name[25];
+    sprintf(file_name,"lv%d.txt",lv);
+    FILE *fp;
 
-   fp = fopen(file_name,"r"); // read mode
+    fp = fopen(file_name,"r"); // read mode
 
-   if( fp == NULL )
-   {
-      perror("Error while opening the file.\n");
-      exit(EXIT_FAILURE);
-   }
+    if( fp == NULL )
+    {
+        perror("Error while opening the file.\n");
+        exit(EXIT_FAILURE);
+    }
 
-   int x=0;
-   int y=0;
-   int aux=0;
-   while( ( ch = fgetc(fp) ) != EOF ){
+    int x=0;
+    int y=0;
+    int aux=0;
+    while( ( ch = fgetc(fp) ) != EOF ){
         switch(ch){
-        case ' ':
-            x++;
-            break;
-        case 'I':
-            b[aux].x=x;
-            b[aux].y=y;
-            x++;
-            break;
-        case 'X':
-            a->x=x;
-            a->y=y;
-            x++;
-            break;
-        case '\n':
-            x=0;
-            y++;
-            break;
-        case '>':
-            goal->x=x;
-            goal->y=y;
-            x++;
-            break;
-        default:
-            x++;
+            case ' ':
+                x++;
+                break;
+            case 'I':
+                b[aux].x=x;
+                b[aux].y=y;
+                x++;
+                break;
+            case 'X':
+                a->x=x;
+                a->y=y;
+                x++;
+                break;
+            case '\n':
+                x=0;
+                y++;
+                break;
+            case '>':
+                goal->x=x;
+                goal->y=y;
+                x++;
+                break;
+            default:
+                x++;
         }
         aux++;
     }
-   fclose(fp);
+    fclose(fp);
 
 }
 void enemy(char *ene, chara *bad, char *ename, int enN){
-   char ch[78];
-   int n =0;
-   char file_name[25];
-   int aux =rand()%enN;
-   char eList[10];
-   loadEn(eList, aux);
-   strcpy(file_name,eList);
-   FILE *fp;
-   strcpy(ename, eList);
-   strtok(ename, ".");
-   while(strlen(ename)<6){
-    strcat(ename, " ");
-   }
-   char auxsting[77]="";
-   fp = fopen(file_name,"r"); // read mode
-   if( fp == NULL )
-   {
-      char error[99];
-      sprintf(error, "Error while opening the enemy file.\n%s",file_name);
-      perror(error);
+    char ch[78];
+    int n =0;
+    char file_name[25];
+    int aux =rand()%enN;
+    char eList[10];
+    loadEn(eList, aux);
+    strcpy(file_name,eList);
+    FILE *fp;
+    strcpy(ename, eList);
+    strtok(ename, ".");
+    while(strlen(ename)<6){
+        strcat(ename, " ");
+    }
+    char auxsting[77]="";
+    fp = fopen(file_name,"r"); // read mode
+    if( fp == NULL )
+    {
+        char error[99];
+        sprintf(error, "Error while opening the enemy file.\n%s",file_name);
+        perror(error);
 
-      exit(EXIT_FAILURE);
-   }
-   int flag =0;
+        exit(EXIT_FAILURE);
+    }
+    int flag =0;
 
-   while( ( fgets(ch,sizeof(ch),fp) )){
-          if(flag == 0){
+    while( ( fgets(ch,sizeof(ch),fp) )){
+        if(flag == 0){
             strcat(ene,ch);
             if(ch[0]=='x'){
                 flag=1;
             }
-          }
-          else{
+        }
+        else{
             strcpy(auxsting,ch);
             switch(auxsting[0]){
                 case 'h':
                     fflush(stdin);
                     sscanf(auxsting, "h: %d", &aux);
                     bad->hp = aux;
-                break;
+                    break;
                 case 's':
                     fflush(stdin);
                     sscanf(auxsting, "s: %d", &aux);
                     bad->st = aux;
-                break;
+                    break;
                 case 'm':
                     fflush(stdin);
                     sscanf(auxsting, "m: %d", &aux);
                     bad->sp = aux;
-                break;
+                    break;
                 case 'd':
                     fflush(stdin);
                     sscanf(auxsting, "d: %d", &aux);
                     bad->def=aux;
-                break;
+                    break;
 
             }
 
-          }
-
-
         }
-   fclose(fp);
+
+
+    }
+    fclose(fp);
 }
 void loadLv(int *nLv,int *enN){
-   char ch[7];
-   char file_name[25] = "settings.txt";
-   FILE *fp;
+    char ch[7];
+    char file_name[25] = "settings.txt";
+    FILE *fp;
 
-   fp = fopen(file_name,"r"); // read mode
+    fp = fopen(file_name,"r"); // read mode
 
-   if( fp == NULL )
-   {
-      perror("Error while opening the level file.\n");
-      exit(EXIT_FAILURE);
-   }
+    if( fp == NULL )
+    {
+        perror("Error while opening the level file.\n");
+        exit(EXIT_FAILURE);
+    }
     fgets(ch,sizeof(ch),fp);
-        sscanf(ch, "lv: %d", &nLv);
+    sscanf(ch, "lv: %d", &nLv);
     fgets(ch,sizeof(ch),fp);
-        sscanf(ch, "en: %d", &enN);
+    sscanf(ch, "en: %d", &enN);
     fclose(fp);
 
 }
 
 void loadEn(char *enList, int n){
-   char ch[15];
-   char file_name[25] = "settings.txt";
-   int cont=0;
-   FILE *fp;
+    char ch[15];
+    char file_name[25] = "settings.txt";
+    int cont=0;
+    FILE *fp;
 
-   fp = fopen(file_name,"r"); // read mode
+    fp = fopen(file_name,"r"); // read mode
 
-   if( fp == NULL )
-   {
-      perror("Error while opening the settings file.\n");
-      exit(EXIT_FAILURE);
-   }
-   fgets(ch,sizeof(ch),fp);
-   fgets(ch,sizeof(ch),fp);
-   while( (fgets(ch,sizeof(ch),fp))&&cont<n){
+    if( fp == NULL )
+    {
+        perror("Error while opening the settings file.\n");
+        exit(EXIT_FAILURE);
+    }
+    fgets(ch,sizeof(ch),fp);
+    fgets(ch,sizeof(ch),fp);
+    while( (fgets(ch,sizeof(ch),fp))&&cont<n){
         cont++;
     }
-   strcpy(enList, ch);
-   strtok(enList, "\n");
-   fclose(fp);
+    strcpy(enList, ch);
+    strtok(enList, "\n");
+    fclose(fp);
 
 }
