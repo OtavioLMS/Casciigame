@@ -235,7 +235,7 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("|--------------------------------------------------------------------------|\n");
         printf("||                                       +---------------------------------|\n");
         printf("|| %s          | %c attack                      |-|\n",texto,f1);
-        printf("|| hp = %2d                               | %c frown                       |-|\n",hp,f2);
+        printf("|| hp = %2d                               | %c magic                       |-|\n",hp,f2);
         printf("|| enemy hp = %2d                         | %c smile back                  |-|\n",enehp,f3);
         printf("||                                       | %c guard                       |-|\n",f4);
         printf("||                                       +---------------------------------|\n");
