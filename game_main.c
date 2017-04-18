@@ -236,7 +236,7 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("||                                       +---------------------------------|\n");
         printf("|| %s          | %c attack                      |-|\n",texto,f1);
         printf("|| hp = %2d                               | %c magic                       |-|\n",hp,f2);
-        printf("|| enemy hp = %2d                         | %c smile back                  |-|\n",enehp,f3);
+        printf("|| enemy hp = %2d                         | %c healing magic               |-|\n",enehp,f3);
         printf("||                                       | %c guard                       |-|\n",f4);
         printf("||                                       +---------------------------------|\n");
         printf("|--------------------------------------------------------------------------|\n");
@@ -262,12 +262,12 @@ void fightSmiley(chara *hero, int ind, int enN){
                         hp -= -(hero->def-(bad.st+rand()%5));
                         break;
                     case 2:
-                        strcpy(texto, "you've frowned              ");
+                        strcpy(texto, "you've used magic!          ");
                         enehp-=(hero->sp-(bad.sp+rand()%15));
                         hp -= -(hero->def-(bad.st+rand()%5));
                         break;
                     case 1:
-                        sprintf(texto,"you smile back to the smiley",ename);
+                        sprintf(texto,"you used healing magic      ",ename);
                         system("color 0A");
                         Sleep(100);
                         system("color A0");
