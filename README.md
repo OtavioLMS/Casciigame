@@ -6,6 +6,9 @@ contains 2 levels and 3 enemies
 
 settings file allows to change the number of levels and enemies
 
-------------------------------------------------------------------
-march 17, 2017
-    I'm retaking this project on my free time for new features and maintenance
+windows 8 and 10 issue was resolved!!!! AWESOME!!!!!!!!!!!!!!!!!!!!!!
+moving on to next planned updates:
+ * linux and mac compatibility and releases
+ * having its own interface instead of using the console
+ * better implementation of file based game changing
+ * complete REMAKE of ALL the code
