@@ -16,8 +16,6 @@ typedef struct axys{
 void mapi(pos a, pos *b, pos goal, int size, chara hero);
 int checkli(int x, int y, pos *b, int size);
 void posiSet(int x,int y,pos *a);
-void widewall(int x1, int x2, int y , pos *a,int *ind);
-void longwall(int y1, int y2, int x , pos *a, int *ind);
 void loadMap(pos *a, pos *b, pos *goal,int lv);
 void loadLv(int *nLv, int *enN);
 void fightSmiley(chara *hero, int ind, int enN);
@@ -185,24 +183,6 @@ int checkli(int x, int y, pos *b, int size){
 void posiSet(int x,int y,pos *a){
     a->x=x;
     a->y=y;
-}
-void widewall(int x1, int x2, int y , pos *a, int *ind){
-    int i;
-    int aux =x2-x1+*ind;
-    for(i=*ind; i<=aux;i++){
-        a[i].y=y;
-        a[i].x=(aux-i)+x1;
-        *ind +=1;
-    }
-}
-void longwall(int y1, int y2, int x , pos *a, int *ind){
-    int i;
-    int aux =y2-y1+*ind;
-    for(i=*ind; i<=aux;i++){
-        a[i].x=x;
-        a[i].y=(aux-i)+y1;
-        *ind +=1;
-    }
 }
 
 void loadMap(pos *a, pos *b, pos *goal, int lv){
