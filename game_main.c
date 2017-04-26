@@ -28,8 +28,10 @@ int main (){
     int lvs = 2;
     int enN = 3;
     loadLv(&lvs, &enN);
-    int sizeb = MAX*MAX;
-    pos a,b[sizeb];
+
+    int map_size = MAX*MAX;
+
+    pos you_are_here, map_positions[map_size];
     pos goal;
     chara hero;
     hero.hp = 30;
@@ -38,56 +40,52 @@ int main (){
     hero.def = 7;
     hero.xp = 0;
     system("mode con:cols=80 lines=31");
-    for(ind=0;ind<sizeb;ind++){
-        b[ind].x=-1;
-        b[ind].y=-1;
+
+    for(ind=0;ind<map_size;ind++){
+        map_positions[ind].x=-1;
+        map_positions[ind].y=-1;
     }
     ind =1;
-    loadMap(&a, b,&goal, ind);
+
+    loadMap(&you_are_here, map_positions, &goal, ind);
+
     ch=0;
-    mapi(a, b, goal, sizeb, hero);
-    while ((ch = getch()) != 27) /* 27 = Esc key */
-    {
+
+    mapi(you_are_here, map_positions, goal, map_size, hero);
+
+    while ((ch = getch()) != 27){  /* 27 = Esc key */
         if (ch == 0 || ch == 224){
             switch (_getch ()){
                 case 72:
-                    if(checkli(a.x, a.y-1,b,sizeb)){
-                        break;
-                    }
-                    if(a.y > 0){
-                        a.y -=1;
-                    }
-                    else{
-                        if(!checkli(a.x, MAX-1,b,sizeb)){
-                            a.y = MAX-1;
+                    if(!checkli(you_are_here.x, you_are_here.y-1, map_positions, map_size)){
+                        if(you_are_here.y > 0){
+                            you_are_here.y -= 1;
+                        }
+                        else if(!checkli(you_are_here.x, MAX-1, map_positions, map_size)){
+                            you_are_here.y = MAX-1;
                         }
                     }
 
                     break;
                 case 77:
-                    if(checkli(((a.x+1)%MAX), a.y,b,sizeb)){
-                        break;
+                    if(!checkli(((you_are_here.x+1)%MAX), you_are_here.y, map_positions, map_size)){
+                        you_are_here.x = (you_are_here.x+1)%MAX;
                     }
-                    a.x=(a.x+1)%MAX;
                     break;
                 case 75:
-                    if(checkli(a.x-1, a.y,b,sizeb)){
-                        break;
-                    }
-                    if(a.x > 0){
-                        a.x -=1;
-                    }
-                    else{
-                        if(!checkli(MAX-1, a.y,b,sizeb)){
-                            a.x = MAX-1;
+                    if(!checkli(you_are_here.x-1, you_are_here.y, map_positions, map_size)){
+                        if(you_are_here.x > 0){
+                            you_are_here.x -= 1;
+                        }
+                        else if(!checkli(MAX-1, you_are_here.y, map_positions, map_size)){
+                            you_are_here.x = MAX-1;
                         }
                     }
                     break;
                 case 80:
-                    if(checkli(a.x, (a.y+1)%MAX,b,sizeb)){
-                        break;
+                    if(!checkli(you_are_here.x, (you_are_here.y+1)%MAX, map_positions, map_size)){
+                        you_are_here.y = (you_are_here.y+1)%MAX;
                     }
-                    a.y=(a.y+1)%MAX;
                     break;
             }
             system("cls");
@@ -95,14 +93,16 @@ int main (){
                 fightSmiley(&hero, ind, enN);
             }
             system("cls");
-            mapi(a,b,goal,sizeb, hero);
+
+            mapi(you_are_here, map_positions, goal, map_size, hero);
         }
-        if (a.x==goal.x&& a.y==goal.y){
+        if (you_are_here.x==goal.x&& you_are_here.y==goal.y){
+
             char lv[16];
             int pp=0;
             if (ind<lvs){
                 ind++;
-                loadMap(&a, b,&goal, ind);
+                loadMap(&you_are_here, map_positions, &goal, ind);
                 system("cls");
                 sprintf(lv,"L E V E L   %d",ind);
                 int pp=0;
