@@ -20,13 +20,15 @@ void loadMap(pos *a, pos *b, pos *goal,int lv);
 void loadLv(int *nLv, int *enN);
 void fightSmiley(chara *hero, int ind, int enN);
 
-
 int main (){
+
     srand(time(0));
+
     int ch;
     int ind = 0;
     int lvs = 2;
     int enN = 3;
+
     loadLv(&lvs, &enN);
 
     int map_size = MAX*MAX;
@@ -34,17 +36,20 @@ int main (){
     pos you_are_here, map_positions[map_size];
     pos goal;
     chara hero;
+
     hero.hp = 30;
     hero.st = 10;
     hero.sp = 20;
     hero.def = 7;
     hero.xp = 0;
+
     system("mode con:cols=80 lines=31");
 
     for(ind=0;ind<map_size;ind++){
         map_positions[ind].x=-1;
         map_positions[ind].y=-1;
     }
+
     ind =1;
 
     loadMap(&you_are_here, map_positions, &goal, ind);
@@ -55,7 +60,9 @@ int main (){
 
     while ((ch = getch()) != 27){  /* 27 = Esc key */
         if (ch == 0 || ch == 224){
+
             switch (_getch ()){
+
                 case 72:
                     if(!checkli(you_are_here.x, you_are_here.y-1, map_positions, map_size)){
                         if(you_are_here.y > 0){
@@ -65,8 +72,8 @@ int main (){
                             you_are_here.y = MAX-1;
                         }
                     }
-
                     break;
+
                 case 77:
                     if(!checkli(((you_are_here.x+1)%MAX), you_are_here.y, map_positions, map_size)){
                         you_are_here.x = (you_are_here.x+1)%MAX;
@@ -88,10 +95,13 @@ int main (){
                     }
                     break;
             }
+
             system("cls");
+
             if(rand()%15==1){
                 fightSmiley(&hero, ind, enN);
             }
+
             system("cls");
 
             mapi(you_are_here, map_positions, goal, map_size, hero);
@@ -100,37 +110,37 @@ int main (){
 
             char lv[16];
             int pp=0;
+
             if (ind<lvs){
                 ind++;
                 loadMap(&you_are_here, map_positions, &goal, ind);
                 system("cls");
-                sprintf(lv,"L E V E L   %d",ind);
+
+                sprintf(lv, "L E V E L   %d", ind);
+
                 int pp=0;
+
                 for(pp=0;lv[pp]!='\0';pp++){
-                    printf("%c",lv[pp]);
+                    printf("%c", lv[pp]);
                     Sleep(100);
                 }
+
             }
             else{
                 system("cls");
                 printf("\n\n\n\n\n\n\n\n\n");
-                char end[107]="congratulations you've escaped the castle of death \n and survived the evil smiley horde\n\n\n T H E   E N D";
 
-                for(pp=0;end[pp]!='\0';pp++){
-                    printf("%c",end[pp]);
+                char end[107] = "congratulations you've escaped the castle of death \n and survived the evil smiley horde\n\n\n T H E   E N D";
+
+                for(pp=0;end[pp] != '\0';pp++){
+                    printf("%c", end[pp]);
                     Sleep(100);
                 }
+
                 printf("\n\n");
                 system("pause");
 
                 exit(0);
-            }
-        }
-    }
-    printf("ESC %d\n", ch);
-    return (0);
-}
-
 
 void mapi(pos a, pos *b, pos goal, int size, chara hero){
     HANDLE  hConsole;
@@ -167,22 +177,8 @@ void mapi(pos a, pos *b, pos goal, int size, chara hero){
 
     }
 
-
-}
-
-int checkli(int x, int y, pos *b, int size){
-    int i;
-    for(i=0;i<size;i++){
-        if(x==b[i].x && y==b[i].y){
-            return 1;
-        }
-    }
-    return 0;
-}
-
-void posiSet(int x,int y,pos *a){
-    a->x=x;
-    a->y=y;
+    printf("ESC %d\n", ch);
+    return (0);
 }
 
 void loadMap(pos *a, pos *b, pos *goal, int lv){
@@ -239,13 +235,13 @@ void loadMap(pos *a, pos *b, pos *goal, int lv){
     fclose(fp);
 
 }
+void loadLv(int *nLv, int *enN){
 
-void loadLv(int *nLv,int *enN){
     char ch[7];
     char file_name[25] = "settings.txt";
     FILE *fp;
 
-    fp = fopen(file_name,"r"); // read mode
+    fp = fopen(file_name, "r"); // read mode
 
     if( fp == NULL )
     {
@@ -253,56 +249,63 @@ void loadLv(int *nLv,int *enN){
         system("pause");
         exit(EXIT_FAILURE);
     }
-    fgets(ch,sizeof(ch),fp);
+
+    fgets(ch, sizeof(ch), fp);
     sscanf(ch, "lv: %d", &nLv);
-    fgets(ch,sizeof(ch),fp);
+    fgets(ch, sizeof(ch), fp);
     sscanf(ch, "en: %d", &enN);
     fclose(fp);
 }
 
-
 void fightSmiley(chara *hero, int ind, int enN){
+
     system("mode con:cols=80 lines=25");
-    char ene[1020]="";
+
+    char ene[1020] = "";
     char ename[20];
     chara bad;
-    bad.xp =0;
+    bad.xp = 0;
+
     enemy(ene, &bad, ename, enN);
+
     int hp = hero->hp;
     int enehp = (bad.hp)*ind;
-    char f1 ='X';
-    char f2 =' ';
-    char f3 =' ';
-    char f4 =' ';
+    char f1 = 'X';
+    char f2 = ' ';
+    char f3 = ' ';
+    char f4 = ' ';
     char texto[30];
-    sprintf(texto,"an evil %s has appeared ",ename);
+
+    sprintf(texto, "an evil %s has appeared ", ename);
+
     int choice = 3;
-    while(enehp>0&&hp>0){
+
+    while(enehp > 0 && hp > 0){
         system("cls");
-        printf("%s",ene);
+        printf("%s", ene);
         printf("|--------------------------------------------------------------------------|\n");
         printf("||                                       +---------------------------------|\n");
-        printf("|| %s          | %c attack                      |-|\n",texto,f1);
-        printf("|| hp = %2d                               | %c magic                       |-|\n",hp,f2);
-        printf("|| enemy hp = %2d                         | %c healing magic               |-|\n",enehp,f3);
-        printf("||                                       | %c guard                       |-|\n",f4);
+        printf("|| %s          | %c attack                      |-|\n", texto, f1);
+        printf("|| hp = %2d                               | %c magic                       |-|\n", hp, f2);
+        printf("|| enemy hp = %2d                         | %c healing magic               |-|\n", enehp, f3);
+        printf("||                                       | %c guard                       |-|\n", f4);
         printf("||                                       +---------------------------------|\n");
         printf("|--------------------------------------------------------------------------|\n");
         printf("+--------------------------------------------------------------------------+\n");
         switch(arrkeys()){
             case 'u':
-                choice =(choice+1)%4;
+                choice = (choice+1)%4;
                 break;
             case 'd':
-                choice -=1;
-                if(choice<0){
-                    choice=3;
+                choice -= 1;
+                if(choice < 0){
+                    choice = 3;
                 }
                 break;
             case 'q':
                 switch(choice){
                     case 3:
-                        sprintf(texto,"you've attacked evil %s ",ename);
+                        sprintf(texto, "you've attacked evil %s ", ename);
                         system("color 4F");
                         Sleep(100);
                         system("color 0F");
@@ -311,11 +314,11 @@ void fightSmiley(chara *hero, int ind, int enN){
                         break;
                     case 2:
                         strcpy(texto, "you've used magic!          ");
-                        enehp-=(hero->sp-(bad.sp+rand()%15));
+                        enehp -= (hero->sp-(bad.sp+rand()%15));
                         hp -= -(hero->def-(bad.st+rand()%5));
                         break;
                     case 1:
-                        sprintf(texto,"you used healing magic      ",ename);
+                        sprintf(texto, "you used healing magic      ");
                         system("color 0A");
                         Sleep(100);
                         system("color A0");
@@ -336,16 +339,16 @@ void fightSmiley(chara *hero, int ind, int enN){
         }
         switch(choice){
             case 3:
-                f1 ='X';
-                f2 =' ';
-                f3 =' ';
-                f4 =' ';
+                f1 = 'X';
+                f2 = ' ';
+                f3 = ' ';
+                f4 = ' ';
                 break;
             case 2:
-                f1 =' ';
-                f2 ='X';
-                f3 =' ';
-                f4 =' ';
+                f1 = ' ';
+                f2 = 'X';
+                f3 = ' ';
+                f4 = ' ';
                 break;
             case 1:
                 f1 =' ';
@@ -360,13 +363,17 @@ void fightSmiley(chara *hero, int ind, int enN){
                 f4 ='X';
                 break;
         }
-        if(hp>(hero->hp)){
-            hp=30;
+
+        if(hp > (hero->hp)){
+            hp = hero->hp;
         }
+
     }
 
     if(hp <= 0){
+
         system("cls");
+
         printf("                                            \n");
         printf("  /$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$ \n");
         printf(" /$$__  $$ /$$__  $$| $$$    /$$$| $$_____/ \n");
@@ -390,12 +397,16 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("                                            \n");
         printf("                                            \n");
         printf("                                            \n");
+
         system("pause");
         exit(0);
 
     }
+
     else{
+
         hero->xp += (rand()%900)/hp;
+
         if (hero->xp >= 100){
             hero->hp += rand()%10;
             hero->st += rand()%3;
@@ -403,7 +414,9 @@ void fightSmiley(chara *hero, int ind, int enN){
             hero->def += rand()%5;
             hero->xp = 0;
         }
+
         system("cls");
+
         printf("+--------------------------------------------------------------------------+\n");
         printf("|                                                                          |\n");
         printf("|                                                                          |\n");
@@ -420,14 +433,17 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("                                                                            \n");
         printf("|--------------------------------------------------------------------------|\n");
         printf("||                                       +---------------------------------|\n");
-        printf("|| you've defeated the evil %s       |                               |-|\n",ename);
+        printf("|| you've defeated the evil %s       |                               |-|\n", ename);
         printf("|| CONGRATULATIONS!                      |                               |-|\n");
         printf("||                                       |                               |-|\n");
         printf("||                                       +---------------------------------|\n");
         printf("|--------------------------------------------------------------------------|\n");
         printf("+--------------------------------------------------------------------------+\n");
+
         system("pause");
+
         system("cls");
+
         printf("                                                                \n");
         printf("__/\\\\\\________/\\\\\\_______/\\\\\\\\\\_______/\\\\\\________/\\\\\\_         \n");
         printf(" _\\///\\\\\\____/\\\\\\/______/\\\\\\///\\\\\\____\\/\\\\\\_______\\/\\\\\\_        \n");
@@ -449,9 +465,11 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("        ______\\///____\\///_______\\///////////__\\///_____\\/////__\n");
         printf("                                                                \n");
         printf("                                                                \n");
-        system("pause");
-        system("mode con:cols=80 lines=31");
-    }
 
+        system("pause");
+
+        system("mode con:cols=80 lines=31");
+
+    }
 
 }
