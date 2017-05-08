@@ -28,7 +28,6 @@ void loadEn(char *enList, int n){
 
 void enemy(char *ene, chara *bad, char *ename, int enN){
     char ch[78];
-    int n =0;
     char file_name[25];
     int aux =rand()%enN;
     char eList[10];
