@@ -158,10 +158,11 @@ void loadLv(int *nLv, int *enN){
     }
 
     fgets(ch, sizeof(ch), fp);
-    sscanf(ch, "lv: %d", &nLv);
+    sscanf(ch, "lv: %d", nLv);
     fgets(ch, sizeof(ch), fp);
-    sscanf(ch, "en: %d", &enN);
+    sscanf(ch, "en: %d", enN);
     fclose(fp);
+
 }
 
 void fightSmiley(chara *hero, int ind, int enN){

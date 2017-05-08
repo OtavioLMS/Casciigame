@@ -2,6 +2,7 @@
 #define _CHARACTERS_LIB_
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
     typedef struct chaar{
         int hp;
         int st;
