@@ -1,8 +1,9 @@
 #ifndef _CHARACTERS_LIB_
 #define _CHARACTERS_LIB_
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include "x_system.h"
     typedef struct chaar{
         int hp;
         int st;
