@@ -35,8 +35,6 @@ int main (){
     hero.def = 7;
     hero.xp = 0;
 
-    system("mode con:cols=80 lines=31");
-
     for(ind=0;ind<map_size;ind++){
         map_positions[ind].x=-1;
         map_positions[ind].y=-1;
@@ -167,8 +165,6 @@ void loadLv(int *nLv, int *enN){
 }
 
 void fightSmiley(chara *hero, int ind, int enN){
-
-    system("mode con:cols=80 lines=25");
 
     char ene[1020] = "";
     char ename[20];
@@ -376,8 +372,6 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("                                                                \n");
 
         system("pause");
-
-        system("mode con:cols=80 lines=31");
 
     }
 
