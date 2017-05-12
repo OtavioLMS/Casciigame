@@ -1,8 +1,8 @@
 #ifndef _MAP_UTILS_LIB_
 #define _MAP_UTILS_LIB_
-#include "characters.h"
-#include <windows.h>   // WinApi header
-#define MAX  23
+    #include "characters.h"
+    #include <windows.h>   // WinApi header
+    #define MAX  23
     typedef struct axys{
         int x;
         int y;
