@@ -128,7 +128,7 @@ int main (){
                 }
 
                 printf("\n\n");
-                system("pause");
+                x_pause();
 
                 exit(0);
 
@@ -152,7 +152,7 @@ void loadLv(int *nLv, int *enN){
     if( fp == NULL )
     {
         perror("Error while opening the level file.\n");
-        system("pause");
+        x_pause();
         exit(EXIT_FAILURE);
     }
 
@@ -303,7 +303,7 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("                                            \n");
         printf("                                            \n");
 
-        system("pause");
+        x_pause();
         exit(0);
 
     }
@@ -345,7 +345,7 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("|--------------------------------------------------------------------------|\n");
         printf("+--------------------------------------------------------------------------+\n");
 
-        system("pause");
+        x_pause();
 
         x_clear();
 
@@ -371,7 +371,7 @@ void fightSmiley(chara *hero, int ind, int enN){
         printf("                                                                \n");
         printf("                                                                \n");
 
-        system("pause");
+        x_pause();
 
     }
 

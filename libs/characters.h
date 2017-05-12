@@ -3,6 +3,7 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
+    #include "x_system.h"
     typedef struct chaar{
         int hp;
         int st;

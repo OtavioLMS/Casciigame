@@ -11,7 +11,7 @@ void loadEn(char *enList, int n){
     if( fp == NULL )
     {
         perror("Error while opening the settings file.\n");
-        system("pause");
+        x_pause();
         exit(EXIT_FAILURE);
     }
     fgets(ch,sizeof(ch),fp);
@@ -45,7 +45,7 @@ void enemy(char *ene, chara *bad, char *ename, int enN){
     {
         char error[99];
         sprintf(error, "Error while opening the enemy file.\n%s",file_name);
-        system("pause");
+        x_pause();
         perror(error);
 
         exit(EXIT_FAILURE);
