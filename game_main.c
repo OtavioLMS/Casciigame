@@ -7,6 +7,7 @@
 #include "libs/arrkeys.h"
 #include "libs/characters.h"
 #include "libs/map_utils.h"
+#include "libs/x_system.h"
 
 void loadLv(int *nLv, int *enN);
 void fightSmiley(chara *hero, int ind, int enN);
@@ -113,7 +114,7 @@ int main (){
 
                 for(pp=0;lv[pp]!='\0';pp++){
                     printf("%c", lv[pp]);
-                    Sleep(100);
+                    x_sleep(100);
                 }
 
             }
@@ -125,7 +126,7 @@ int main (){
 
                 for(pp=0;end[pp] != '\0';pp++){
                     printf("%c", end[pp]);
-                    Sleep(100);
+                    x_sleep(100);
                 }
 
                 printf("\n\n");
@@ -215,7 +216,7 @@ void fightSmiley(chara *hero, int ind, int enN){
                     case 3:
                         sprintf(texto, "you've attacked evil %s ", ename);
                         system("color 4F");
-                        Sleep(100);
+                        x_sleep(100);
                         system("color 0F");
                         enehp-=(hero->st-(bad.def));
                         hp -= -(hero->def-(bad.st+rand()%5));
@@ -228,16 +229,16 @@ void fightSmiley(chara *hero, int ind, int enN){
                     case 1:
                         sprintf(texto, "you used healing magic      ");
                         system("color 0A");
-                        Sleep(100);
+                        x_sleep(100);
                         system("color A0");
-                        Sleep(50);
+                        x_sleep(50);
                         system("color 0F");
                         hp = hp + hero->sp/2;
                         hp -= -(hero->def-(bad.st+rand()%5));
                         break;
                     case 0:
                         system("color 84");
-                        Sleep(100);
+                        x_sleep(100);
                         system("color 0F");
                         strcpy(texto, "you  guard to reduce damage ");
                         hp -= -((hero->def*2)-(bad.st+rand()%5));
