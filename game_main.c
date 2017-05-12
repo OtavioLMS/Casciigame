@@ -86,13 +86,13 @@ int main (){
                     break;
             }
 
-            system("cls");
+            x_clear();
 
             if(rand()%15==1){
                 fightSmiley(&hero, ind, enN);
             }
 
-            system("cls");
+            x_clear();
 
             mapi(you_are_here, map_positions, goal, map_size, hero);
         }
@@ -104,7 +104,7 @@ int main (){
             if (ind<lvs){
                 ind++;
                 loadMap(&you_are_here, map_positions, &goal, ind);
-                system("cls");
+                x_clear();
 
                 sprintf(lv, "L E V E L   %d", ind);
 
@@ -117,7 +117,7 @@ int main (){
 
             }
             else{
-                system("cls");
+                x_clear();
                 printf("\n\n\n\n\n\n\n\n\n");
 
                 char end[107] = "congratulations you've escaped the castle of death \n and survived the evil smiley horde\n\n\n T H E   E N D";
@@ -186,7 +186,7 @@ void fightSmiley(chara *hero, int ind, int enN){
     int choice = 3;
 
     while(enehp > 0 && hp > 0){
-        system("cls");
+        x_clear();
         printf("%s", ene);
         printf("|--------------------------------------------------------------------------|\n");
         printf("||                                       +---------------------------------|\n");
@@ -277,7 +277,7 @@ void fightSmiley(chara *hero, int ind, int enN){
 
     if(hp <= 0){
 
-        system("cls");
+        x_clear();
 
         printf("                                            \n");
         printf("  /$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$ \n");
@@ -320,7 +320,7 @@ void fightSmiley(chara *hero, int ind, int enN){
             hero->xp = 0;
         }
 
-        system("cls");
+        x_clear();
 
         printf("+--------------------------------------------------------------------------+\n");
         printf("|                                                                          |\n");
@@ -347,7 +347,7 @@ void fightSmiley(chara *hero, int ind, int enN){
 
         system("pause");
 
-        system("cls");
+        x_clear();
 
         printf("                                                                \n");
         printf("__/\\\\\\________/\\\\\\_______/\\\\\\\\\\_______/\\\\\\________/\\\\\\_         \n");
