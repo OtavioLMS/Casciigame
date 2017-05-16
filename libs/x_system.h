@@ -8,5 +8,4 @@
         #define x_sleep(ms) usleep(ms)
     #endif
     void x_pause();
-    void x_clear();
 #endif
