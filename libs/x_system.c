@@ -5,7 +5,7 @@
     }
 #else
     void x_pause(){
-        printw("press ENTER key to continue...")
+        printw("press ENTER key to continue...");
         getchar();
     }
 #endif
