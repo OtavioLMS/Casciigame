@@ -170,6 +170,7 @@ void loadLv(int *nLv, int *enN){
     {
         perror("Error while opening the level file.\n");
         x_pause();
+        endwin();
         exit(EXIT_FAILURE);
     }
 
@@ -333,6 +334,7 @@ void fightSmiley(chara *hero, int ind, int enN){
         x_sleep(100);
         refresh();
         x_pause();
+        endwin();
         exit(0);
 
     }

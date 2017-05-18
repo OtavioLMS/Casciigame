@@ -31,6 +31,7 @@ void loadMap(pos *a, pos *b, pos *goal, int lv){
     if( fp == NULL )
     {
         perror("Error while opening the file.\n");
+        endwin();
         exit(EXIT_FAILURE);
     }
 

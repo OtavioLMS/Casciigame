@@ -12,6 +12,7 @@ void loadEn(char *enList, int n){
     {
         perror("Error while opening the settings file.\n");
         x_pause();
+        endwin();
         exit(EXIT_FAILURE);
     }
     fgets(ch,sizeof(ch),fp);
