@@ -4,9 +4,9 @@
         #include <windows.h>
         #define x_sleep(ms) Sleep(ms)
     #else
+        #include <curses.h>
         #include <unistd.h>
         #define x_sleep(ms) usleep(ms)
     #endif
     void x_pause();
-    void x_clear();
 #endif

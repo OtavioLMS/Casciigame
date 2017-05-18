@@ -31,6 +31,7 @@ void loadMap(pos *a, pos *b, pos *goal, int lv){
     if( fp == NULL )
     {
         perror("Error while opening the file.\n");
+        endwin();
         exit(EXIT_FAILURE);
     }
 
@@ -69,45 +70,47 @@ void loadMap(pos *a, pos *b, pos *goal, int lv){
     fclose(fp);
 
 }
-
+/*
+mapi function:
+    prints the current map on the screen
+OBS:
+    you need to have called start_color on the main loop BEFORE calling this
+    function
+*/
 void mapi(pos a, pos *b, pos goal, int size, chara hero){
-
-    HANDLE  hConsole;
-    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
     int x,y;
 
-    printf("hero stats:\n");
-    printf("hp = %d ----- the health of the hero\n", hero.hp);
-    printf("st = %d ----- physical power\n", hero.st);
-    printf("sp = %d ----- magical power\n", hero.sp);
-    printf("def = %d ----- defense\n", hero.def);
-    printf("xp = %d ----- experience(gets random status upgrades upon reaching 100)\n\n", hero.xp);
+    printw("hero stats:\n");
+    printw("hp = %d ----- the health of the hero\n", hero.hp);
+    printw("st = %d ----- physical power\n", hero.st);
+    printw("sp = %d ----- magical power\n", hero.sp);
+    printw("def = %d ----- defense\n", hero.def);
+    printw("xp = %d ----- experience(gets random status upgrades upon reaching 100)\n\n", hero.xp);
 
     for(y=0;y<MAX;y++){
 
         for(x=0;x<MAX;x++){
 
             if(x== a.x && y== a.y){
-                SetConsoleTextAttribute(hConsole, 15);
-                printf("X");
+                printw("X");
             }
             else if(goal.x == x && goal.y== y){
-                SetConsoleTextAttribute(hConsole, 58);
-                printf(">");
+                attron(COLOR_PAIR(3));
+                printw(">");
+                attroff(COLOR_PAIR(3));
             }
             else if(checkli(x,y,b,size)){
-                SetConsoleTextAttribute(hConsole, 202);
-                printf("I");
+                attron(COLOR_PAIR(2));
+                printw("I");
+                attroff(COLOR_PAIR(2));
             }
             else{
-                SetConsoleTextAttribute(hConsole, 15);
-                printf(" ");
+                printw(" ");
             }
 
         }
-        SetConsoleTextAttribute(hConsole, 15);
-        printf("\n");
+        printw("\n");
 
     }
 
