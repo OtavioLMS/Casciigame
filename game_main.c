@@ -138,10 +138,13 @@ int main (){
                 for(pp=0;end[pp] != '\0';pp++){
                     printw("%c", end[pp]);
                     x_sleep(100);
+                    refresh();
                 }
                 attroff(COLOR_PAIR(1));
 
                 printw("\n\n");
+                x_sleep(100);
+                refresh();
                 x_pause();
 
                 endwin();
