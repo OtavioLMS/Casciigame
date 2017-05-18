@@ -237,9 +237,6 @@ void fightSmiley(chara *hero, int ind, int enN){
                 switch(choice){
                     case 3:
                         sprintf(texto, "you've attacked evil %s ", ename);
-                        system("color 4F");
-                        x_sleep(100);
-                        system("color 0F");
                         enehp-=(hero->st-(bad.def));
                         hp -= -(hero->def-(bad.st+rand()%5));
                         break;
@@ -250,18 +247,10 @@ void fightSmiley(chara *hero, int ind, int enN){
                         break;
                     case 1:
                         sprintf(texto, "you used healing magic      ");
-                        system("color 0A");
-                        x_sleep(100);
-                        system("color A0");
-                        x_sleep(50);
-                        system("color 0F");
                         hp = hp + hero->sp/2;
                         hp -= -(hero->def-(bad.st+rand()%5));
                         break;
                     case 0:
-                        system("color 84");
-                        x_sleep(100);
-                        system("color 0F");
                         strcpy(texto, "you  guard to reduce damage ");
                         hp -= -((hero->def*2)-(bad.st+rand()%5));
                         break;
