@@ -13,4 +13,5 @@ settings file allows to change the number of levels and enemies
 
 ## DEPENDENCIES ##
 as of the changes in this branch the game depends on the curses implementation
-of the [PDcurses library](https://pdcurses.sourceforge.io/index.html)
+of the [PDcurses library](https://pdcurses.sourceforge.io/index.html) for windows
+and the [Ncurses library](http://invisible-island.net/ncurses/)
