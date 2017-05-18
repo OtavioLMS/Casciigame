@@ -33,7 +33,7 @@ void enemy(char *ene, chara *bad, char *ename, int enN){
     int aux =rand()%enN;
     char eList[10];
     loadEn(eList, aux);
-    strcpy(file_name,eList);
+    strcpy(file_name, eList);
     FILE *fp;
     strcpy(ename, eList);
     strtok(ename, ".");
@@ -41,7 +41,7 @@ void enemy(char *ene, chara *bad, char *ename, int enN){
         strcat(ename, " ");
     }
     char auxsting[77]="";
-    fp = fopen(file_name,"r"); // read mode
+    fp = fopen(file_name, "r"); // read mode
     if( fp == NULL )
     {
         char error[99];
@@ -55,7 +55,7 @@ void enemy(char *ene, chara *bad, char *ename, int enN){
 
     while( ( fgets(ch,sizeof(ch),fp) )){
         if(flag == 0){
-            strcat(ene,ch);
+            strcat(ene, ch);
             if(ch[0]=='x'){
                 flag=1;
             }
@@ -87,7 +87,6 @@ void enemy(char *ene, chara *bad, char *ename, int enN){
             }
 
         }
-
 
     }
     fclose(fp);
