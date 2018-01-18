@@ -1,4 +1,5 @@
-# Casciigame
+# Casciigame(PROJECT ABANDONED UNTIL FURTHER NOTICE)
+### coming soon(maybe not soon but almost definitely someday) a "sequel" made in crystal
 ## Description ##
 little ascii rpg made in c
 
