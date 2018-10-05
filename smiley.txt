@@ -1,5 +1,5 @@
 +--------------------------------------------------------------------------+
-|                           XXXXXXXXXXXXX                                  |
+|                            XXXXXXXXXXX                                   |
 |                         XXXXXXXXXXXXXXXXX                                |
 |                       XXXXXX  XXXXX  XXXXXX                              |
 |                      XXXXXXX  XXXXX  XXXXXXX                             |
@@ -9,7 +9,7 @@
 |                      XXXX               XXXX                             |
 |                       XXXXX           XXXXX                              |
 |                         XXXXXXXXXXXXXXXXX                                |
-|                           XXXXXXXXXXXXX                                  |
+|                            XXXXXXXXXXX                                   |
 x--------------------------------------------------------------------------+
 
 h: 30
