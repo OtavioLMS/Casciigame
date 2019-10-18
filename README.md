@@ -1,16 +1,19 @@
-# Casciigame(PROJECT ABANDONED UNTIL FURTHER NOTICE)
-## Description ##
-little ascii rpg made in c
+#Casciigame (PROJECT ABANDONED UNTIL FURTHER NOTICE)
 
-contains 2 levels and 3 enemies
+##Description
 
-settings file allows to change the number of levels and enemies
+Little ASCII RPG made in C
 
-## future changes: ##
- * adding music/audio
- * better implementation of file based game changing
+Contains:
+- [x] 2 levels
+- [x] 3 enemies
 
-## DEPENDENCIES ##
-as of the changes in this branch the game depends on the curses implementation of:
-* [PDcurses library](https://pdcurses.sourceforge.io/index.html) for windows
-* [Ncurses library](http://invisible-island.net/ncurses/) for linux
+Settings file allows to change the number of levels and enemies
+
+##<s>FUTURE CHANGES</s> (ABANDONED):
+- [ ] Adding music/audio
+- [ ] Better implementation of file based game changing
+##DEPENDENCIES
+As of the changes in this branch the game depends on the curses implementation of:
+- PDcurses library for windows
+- Ncurses library for linux
